@@ -1,8 +1,15 @@
-import psycopg2
 import string
+import psycopg2
 
 def parse_submission_data(submission):
-    """Returns a list of relevant submission data"""
+    """
+        Parses Reddit API wrapper, PRAW, to extract post submission data.
+        Returns a list of relevant submission data for export to database.
+        
+        Input: PRAW submission generator-object
+        Output: List
+    """
+    
     subreddit_name = str(submission.subreddit)
     subreddit_id = submission.subreddit_id
     subscriber_count = submission.subreddit.subscribers # number of redditers subscribed to subreddit
@@ -26,8 +33,16 @@ def parse_submission_data(submission):
             score,
             nsfw]
 
+
 def to_postgres_submissions(sub_test):
-    pconn = psycopg2.connect(dbname='reddit_scrape', user="roboto", password='', host='localhost')
+    """
+        Psycopg2 dump scraped list to PostgreSQL Database table "submissions"
+        
+        Input: List
+        Output: Psycopg2 commit to "Submission" table
+    """
+    
+    pconn = psycopg2.connect(dbname=[Insert DB name], user=[Insert local user], password='', host='localhost')
     pcur = pconn.cursor()
 
     sql_stmt ="""INSERT INTO\
@@ -68,7 +83,14 @@ def to_postgres_submissions(sub_test):
 
 
 def parse_comment_data(comment):
-    """Returns a list of relevant comment data"""
+    """
+        Parses Reddit API wrapper, PRAW, to extract post comment data.
+        Returns a list of relevant submission data for export to database.
+        
+        Input: PRAW comment generator-object
+        Output: List
+    """
+    
     comment_id = comment.id
     author = comment.author
     parent_id = comment.parent_id
@@ -109,7 +131,14 @@ def parse_comment_data(comment):
 
 
 def to_postgres_comments(com_test):
-    pconn = psycopg2.connect(dbname='reddit_scrape', user="roboto", password='', host='localhost')
+        """
+        Psycopg2 dump scraped list to PostgreSQL Database table "comments"
+        
+        Input: List
+        Output: Psycopg2 commit to "Submission" table
+    """
+    
+    pconn = psycopg2.connect(dbname=[Insert DB name], user=[Insert local user], password='', host='localhost')
     pcur = pconn.cursor()
 
     sql_stmt ="""INSERT INTO\
