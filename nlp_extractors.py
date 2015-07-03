@@ -89,13 +89,19 @@ def noun_tokenizer(text, format='string'):
     #Tag all words in tokenized list
     tagged = pos_tag(tokens)
     nouns = [word for word,pos in tagged\
-            if (pos == 'NN' or\     #Noun tag
-                pos == 'NNP' or\    #Proper Noun tag
-                pos == 'NNS' or\    #Plural Noun tag
-                pos == 'NNPS' or\   #Plural Proper Noun tag
-                pos == 'CD' or\     #Numbers tag
-                pos == 'FW'         #Foreign Word tag
+            if (pos == 'NN' or\     
+                pos == 'NNP' or\  
+                pos == 'NNS' or\    
+                pos == 'NNPS' or\   
+                pos == 'CD' or\     
+                pos == 'FW'        
             )]       
+    #NN: Noun tag
+    #NNP: Proper Noun tag
+    #NNS: Plural Noun tag
+    #NNPS: Plural Proper Noun tag
+    #CD: Numbers tag
+    #FW: Foreign Word tag
 
     #Remove metatag for subreddit
     if len(nouns) >= 1 and nouns[0] == 'rGames':
