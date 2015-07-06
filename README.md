@@ -29,7 +29,7 @@ See the SlideDeck.pdf file for a presentation of key points and results of the p
 
 ##In-depth Process
 
-###Scraping Reddit 
+####Scraping Reddit 
         A relational database must come before any graph building. Using a Python wrapper for the 
         Reddit API, I wrote a scraper class I called "Rabid Reddit" to grab the submission posts 
         then flatten the comment tree and scrape the metadata and text from each comment. The 
@@ -44,7 +44,7 @@ See the SlideDeck.pdf file for a presentation of key points and results of the p
         sentiment of the original post i.e. a negative comment about a positive sentiment posting
         would have a negative popularity for the comment.
 
-###Building a Social Graph
+####Building a Social Graph
         A graph is the framework to store the information about the Reddit users: their actions
         and relationships. I used the iGraph module for this project. The nodes (or vertices) of 
         my graph were the unique users scraped from r/Games. The edges represent the relationships
@@ -57,7 +57,7 @@ See the SlideDeck.pdf file for a presentation of key points and results of the p
         well as the all the topics the two users talked about. This allowed me to query the graph
         at a community level and extract the topics talked about in the community.
 
-###Community Detection
+####Community Detection
         A graph is not very useful without communities. Using the maximum modularity algorithm, I 
         divided the graph into communities.  I used the betweenness centrality theorem of maximum
         modularity as my measurement.  This separates communities by maximizing the number of edges 
@@ -67,17 +67,17 @@ See the SlideDeck.pdf file for a presentation of key points and results of the p
         allow for finding similar communities based on Doc2Vec similarity of topics discussed in
         the communities.
         
-###Customer Segmentation
+####Customer Segmentation
         The complete graph now shows me which games and topics are of interested to each community.
         It can also tell the dynamics of each group such as most influential member.  And which 
         users had positive or negative perspectives about the topics of interest to the community.
 
-###Important links:
+##Important links:
 
     PRAW documentation: https://praw.readthedocs.org/en/v3.0.0/
     Gensim documentation: http://gensim.readthedocs.org/en/latest/
 
-###Dependencies
+##Dependencies
 
 RSPG is tested to work under Python 2.7.
 
