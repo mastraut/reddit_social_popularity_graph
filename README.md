@@ -3,6 +3,7 @@
 
 Reddit Social Popularity Graph (RSPG) is a Python module for customer segmentation and popularity analysis of sub-reddit communities.
 
+
 The project was started in June 2015 by Matt Strautmann as the capstone project for the Galvanize Data Science Immersive Program (galvanize.com). 
 See the Slidedeck.pdf file for a presentation of key points and results of the project.
 
